@@ -139,10 +139,13 @@ namespace Math_Quiz
                 MessageBox.Show("You got all the answers right!",
                                 "Congratulations!");
                 startButton.Enabled = true;
+
+                // Repair bug with red color when you start quiz again
+                timeLabel.BackColor = Color.Transparent;
             }
             else if (timeLeft > 0)
             {
-                if(timeLeft==5)
+                if(timeLeft==6)
                     timeLabel.BackColor = Color.Red;
                 // If CheckTheAnswer() returns false, keep counting
                 // down. Decrease the time left by one second and 
@@ -177,6 +180,34 @@ namespace Math_Quiz
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfAnswer);
             }
+        }
+
+        private void value_Changed_Beep_Difference(object sender, EventArgs e) 
+        {
+            // if answer is good AND we have time, do BEEP
+            if((difference.Value==(minuend-subtrahend)) && (timeLeft>0))
+                Console.Beep(800, 800);
+        }
+
+        private void value_Changed_Beep_Sum(object sender, EventArgs e)
+        {
+            // if answer is good AND we have time, do BEEP
+            if ((sum.Value == addend1 + addend2) && (timeLeft > 0))
+                Console.Beep(800, 800);
+        }
+
+        private void value_Changed_Beep_Product(object sender, EventArgs e)
+        {
+            // if answer is good AND we have time, do BEEP
+            if ((product.Value == multiplier * multiplicand) && (timeLeft > 0))
+                Console.Beep(800, 800);
+        }
+
+        private void value_Changed_Beep_Quotient(object sender, EventArgs e)
+        {
+            // if answer is good AND we have time, do BEEP
+            if ((quotient.Value == dividend / divisor) && (timeLeft > 0))
+                Console.Beep(800, 800);
         }
     }
 }
