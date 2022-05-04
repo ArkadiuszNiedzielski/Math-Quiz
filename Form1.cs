@@ -142,6 +142,8 @@ namespace Math_Quiz
             }
             else if (timeLeft > 0)
             {
+                if(timeLeft==5)
+                    timeLabel.BackColor = Color.Red;
                 // If CheckTheAnswer() returns false, keep counting
                 // down. Decrease the time left by one second and 
                 // display the new time left by updating the 
@@ -161,6 +163,7 @@ namespace Math_Quiz
                 product.Value = multiplicand * multiplier;
                 quotient.Value = dividend / divisor;
                 startButton.Enabled = true;
+                timeLabel.BackColor = Color.Transparent;
             }
         }
 
